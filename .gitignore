@@ -1,0 +1,24 @@
+# ===================================
+# WordPress Core Files
+# ===================================
+wp-config.php         # Local config file
+wp-content/uploads/   # Media uploads (can be huge)
+wp-content/cache/     # Cache files
+wp-content/upgrade/   # WP upgrade temp files
+wp-content/backup-db/ # DB backup plugin folder
+wp-content/backups/   # Backup files
+
+# ===================================
+# OS Generated Files
+# ===================================
+.DS_Store
+Thumbs.db
+
+# ===================================
+# Logs & Debug
+# ===================================
+*.log
+debug.log
+
+*.env
+.env.* 

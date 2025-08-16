@@ -33,6 +33,13 @@ function save_custom_user_role($user_id) {
     update_user_meta($user_id, 'custom_role', sanitize_text_field($_POST['custom_role']));
 }
 
+function is_active_sidebar_link($link_path) {
+    $current_path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+    $link_path_trimmed = trim(parse_url($link_path, PHP_URL_PATH), '/');
+
+    return $current_path === $link_path_trimmed ? 'active' : '';
+}
+
 // Enqueue Styles & Scripts
 function dashboard_enqueue_assets() {
     $styles = [

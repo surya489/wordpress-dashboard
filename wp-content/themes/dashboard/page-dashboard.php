@@ -20,11 +20,11 @@ get_header();
         <div class="logo">My Dashboard</div>
         <nav>
             <ul>
-                <li><a href="#">Dashboard</a></li>
-                <li><a href="#">Projects</a></li>
-                <li><a href="#">Calendar</a></li>
+                <li><a href="<?php echo site_url('/dashboard'); ?>" class="<?php echo is_active_sidebar_link(site_url('/dashboard')); ?>">Dashboard</a></li>
+                <li><a href="<?php echo site_url('/projects'); ?>" class="<?php echo is_active_sidebar_link(site_url('/projects')); ?>">Projects</a></li>
+                <li><a href="<?php echo site_url('/calendar'); ?>" class="<?php echo is_active_sidebar_link(site_url('/calendar')); ?>">Calendar</a></li>
                 <?php if($user_role === 'admin' || $user_role === 'manager') : ?>
-                    <li><a href="#">Settings</a></li>
+                    <li><a href="<?php echo site_url('/settings'); ?>" class="<?php echo is_active_sidebar_link(site_url('/settings')); ?>">Settings</a></li>
                 <?php endif; ?>
             </ul>
         </nav>

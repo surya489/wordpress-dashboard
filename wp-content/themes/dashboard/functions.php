@@ -33,20 +33,42 @@ function save_custom_user_role($user_id) {
     update_user_meta($user_id, 'custom_role', sanitize_text_field($_POST['custom_role']));
 }
 
-// Enque custom styles
-function dashboard_enqueue_styles() {
+// Enqueue Styles & Scripts
+function dashboard_enqueue_assets() {
     $styles = [
-        'custom-dashboard'    => '/assets/css/dashboard.css',
-        'dashboard-custom-login' => '/assets/css/custom-login.css',
+        'custom-dashboard'        => '/assets/css/dashboard.css',
+        'dashboard-custom-login'  => '/assets/css/custom-login.css',
+        'font-awesome'            => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
     ];
 
     foreach ($styles as $handle => $path) {
-        wp_enqueue_style(
-            $handle,
-            get_template_directory_uri() . $path,
-            array(),
-            filemtime(get_template_directory() . $path)
-        );
+        if (strpos($path, 'http') === 0) {
+            wp_enqueue_style($handle, $path, [], null);
+        } else {
+            wp_enqueue_style(
+                $handle,
+                get_template_directory_uri() . $path,
+                [],
+                filemtime(get_template_directory() . $path)
+            );
+        }
     }
+
+    // JS Files
+    wp_enqueue_script(
+        'chart-js',
+        'https://cdn.jsdelivr.net/npm/chart.js',
+        [],
+        null,
+        true
+    );
+
+    wp_enqueue_script(
+        'dashboard-charts',
+        get_template_directory_uri() . '/assets/js/dashboard-charts.js',
+        ['jquery', 'chart-js'],
+        filemtime(get_template_directory() . '/assets/js/dashboard-charts.js'),
+        true
+    );
 }
-add_action('wp_enqueue_scripts', 'dashboard_enqueue_styles');
+add_action('wp_enqueue_scripts', 'dashboard_enqueue_assets');

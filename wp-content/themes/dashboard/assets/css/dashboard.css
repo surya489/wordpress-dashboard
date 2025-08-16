@@ -1,3 +1,6 @@
+
+/* ===== Dashboard Wrapper ===== */
+
 .dashboard-container {
     padding: 30px;
     background: #f8f9fa;
@@ -16,4 +19,169 @@
     border-radius: 10px;
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     font-size: 16px;
+}
+
+.dashboard-wrapper {
+    width: 100%;
+    display: flex;
+    min-height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f8;
+}
+
+/* ===== Sidebar ===== */
+/* ===== Sidebar ===== */
+.sidebar {
+    width: 220px;
+    background-color: #1f2937; /* dark gray */
+    color: #fff;
+    padding: 20px;
+    flex-shrink: 0;
+
+    /* Fixed sidebar */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* full viewport height */
+    overflow-y: auto; /* scroll if content exceeds height */
+}
+
+.sidebar .logo {
+    font-size: 22px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.sidebar nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar nav ul li {
+    margin-bottom: 15px;
+}
+
+.sidebar nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+
+.sidebar nav ul li a:hover {
+    background-color: #374151;
+}
+
+/* Main Content for Fixed Sidebar */
+.main-content {
+    margin-left: 240px;
+    flex-grow: 1;
+    padding: 30px;
+}
+
+/* Topbar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #fff;
+    padding: 15px 20px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* User Menu */
+.user-menu {
+    position: relative;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    cursor: pointer;
+}
+
+.user-avatar {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+}
+
+.user-name {
+    font-weight: 500;
+}
+
+.user-menu .fas.dropdown-icon {
+    transition: all 0.3s;
+}
+
+.user-dropdown {
+    width: 100%;
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    list-style: none;
+    padding: 10px 0;
+    min-width: 120px;
+    z-index: 100;
+    margin: 0;
+}
+
+.user-dropdown li a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 14px;
+    padding: 8px 15px;
+    text-decoration: none;
+    color: #111827;
+    transition: background 0.2s;
+}
+
+.user-dropdown li a i {
+    font-size: 10px;
+}
+
+.user-dropdown li a:hover {
+    background-color: #f3f4f6;
+}
+
+/* Show dropdown on hover */
+.user-menu:hover .user-dropdown {
+    display: block;
+}
+
+.user-menu:hover .fas.dropdown-icon {
+    transform: rotate(180deg);
+    margin-top: 5px;
+}
+
+/* Widgets Grid */
+.widgets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+/* Widget Card */
+.widget-card {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    font-size: 16px;
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: default;
+}
+
+.widget-card:not(.attendence-chart):hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }

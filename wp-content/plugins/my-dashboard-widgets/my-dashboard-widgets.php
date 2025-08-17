@@ -44,16 +44,36 @@ add_action('widgets_init', function () {
  * Enqueue assets (front-end only when shortcode/page used)
  */
 add_action('wp_enqueue_scripts', function () {
-    if (!mdw_is_dashboard_context()) return; // load only on dashboard page/shortcode
+    if (!mdw_is_dashboard_context()) return;
 
-    // styles
-    wp_enqueue_style('mdw-dashboard', MDW_URL . 'assets/css/dashboard.css', [], filemtime(MDW_PATH . 'assets/css/dashboard.css'));
+    // Styles
+    wp_enqueue_style(
+        'mdw-dashboard',
+        MDW_URL . 'assets/css/dashboard.css',
+        [],
+        filemtime(MDW_PATH . 'assets/css/dashboard.css')
+    );
 
-    // chart.js (cdn)
+    // Chart.js
     wp_enqueue_script('chart-js', 'https://cdn.jsdelivr.net/npm/chart.js', [], null, true);
-    // attendance helper (renders doughnuts)
-    wp_enqueue_script('mdw-attendance', MDW_URL . 'assets/js/attendance.js', ['chart-js'], filemtime(MDW_PATH . 'assets/js/attendance.js'), true);
+
+    // Our custom dashboard scripts
+    $scripts = [
+        'mdw-attendance'     => 'attendance.js',
+        'mdw-project-status' => 'project-status.js',
+    ];
+
+    foreach ($scripts as $handle => $file) {
+        wp_enqueue_script(
+            $handle,
+            MDW_URL . 'assets/js/' . $file,
+            ['jquery', 'chart-js'], // common deps
+            filemtime(MDW_PATH . 'assets/js/' . $file),
+            true
+        );
+    }
 });
+
 
 /**
  * Shortcode to render the dashboard
@@ -85,11 +105,27 @@ add_shortcode('mdw_dashboard', function ($atts = []) {
                 <div class="mdw-user">
                     <img class="mdw-avatar" src="<?php echo esc_url(get_avatar_url($u->ID)); ?>" alt="">
                     <span class="mdw-user__name"><?php echo esc_html($u->display_name); ?></span>
-                    <div class="mdw-user__dropdown">
-                        <a href="<?php echo esc_url(site_url('/profile')); ?>"><i class="fa-solid fa-user"></i> Profile</a>
-                        <a href="<?php echo esc_url(site_url('/account')); ?>"><i class="fa-solid fa-gear"></i> Account</a>
-                        <a href="<?php echo esc_url(wp_logout_url(site_url('/login'))); ?>"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
-                    </div>
+                    <i class="fas fa-caret-down dropdown-icon"></i>
+                    <ul class="user-dropdown">
+                        <li>
+                            <a href="<?php echo site_url('/profile'); ?>">
+                                <i class="fas fa-user"></i>
+                                <span class="">Profile</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo site_url('/account'); ?>">
+                                <i class="fas fa-cog"></i> 
+                                <span class="">Account</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="<?php echo wp_logout_url(site_url('/login')); ?>">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span class="">Logout</span>
+                            </a>
+                        </li>
+                    </ul>
                 </div>
             </div>
 

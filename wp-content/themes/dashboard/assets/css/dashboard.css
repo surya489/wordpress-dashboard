@@ -93,7 +93,7 @@
 }
 
 /* User Menu */
-.user-menu {
+.mdw-user {
     position: relative;
     display: flex;
     gap: 10px;
@@ -111,7 +111,7 @@
     font-weight: 500;
 }
 
-.user-menu .fas.dropdown-icon {
+.mdw-user .fas.dropdown-icon {
     transition: all 0.3s;
 }
 
@@ -151,11 +151,11 @@
 }
 
 /* Show dropdown on hover */
-.user-menu:hover .user-dropdown {
+.mdw-user:hover .user-dropdown {
     display: block;
 }
 
-.user-menu:hover .fas.dropdown-icon {
+.mdw-user:hover .fas.dropdown-icon {
     transform: rotate(180deg);
     margin-top: 5px;
 }

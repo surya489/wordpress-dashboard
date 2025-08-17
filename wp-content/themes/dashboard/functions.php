@@ -40,6 +40,55 @@ function is_active_sidebar_link($link_path) {
     return $current_path === $link_path_trimmed ? 'active' : '';
 }
 
+// Add Meta Boxes
+add_action('add_meta_boxes', function () {
+    add_meta_box('mdw_project_details', 'Project Details', 'mdw_project_details_cb', 'mdw_project', 'normal', 'default');
+});
+
+function mdw_project_details_cb($post) {
+    $status   = get_post_meta($post->ID, '_mdw_status', true);
+    $priority = get_post_meta($post->ID, '_mdw_priority', true);
+    $deadline = get_post_meta($post->ID, '_mdw_deadline', true);
+
+    ?>
+    <p>
+        <label><strong>Status:</strong></label><br>
+        <select name="mdw_status">
+            <option value="In Progress" <?php selected($status, 'In Progress'); ?>>In Progress</option>
+            <option value="Completed" <?php selected($status, 'Completed'); ?>>Completed</option>
+            <option value="On Hold" <?php selected($status, 'On Hold'); ?>>On Hold</option>
+        </select>
+    </p>
+
+    <p>
+        <label><strong>Priority:</strong></label><br>
+        <select name="mdw_priority">
+            <option value="High" <?php selected($priority, 'High'); ?>>High</option>
+            <option value="Medium" <?php selected($priority, 'Medium'); ?>>Medium</option>
+            <option value="Low" <?php selected($priority, 'Low'); ?>>Low</option>
+        </select>
+    </p>
+
+    <p>
+        <label><strong>Deadline:</strong></label><br>
+        <input type="date" name="mdw_deadline" value="<?php echo esc_attr($deadline); ?>">
+    </p>
+    <?php
+}
+
+// Save Meta Data
+add_action('save_post_mdw_project', function ($post_id) {
+    if (isset($_POST['mdw_status'])) {
+        update_post_meta($post_id, '_mdw_status', sanitize_text_field($_POST['mdw_status']));
+    }
+    if (isset($_POST['mdw_priority'])) {
+        update_post_meta($post_id, '_mdw_priority', sanitize_text_field($_POST['mdw_priority']));
+    }
+    if (isset($_POST['mdw_deadline'])) {
+        update_post_meta($post_id, '_mdw_deadline', sanitize_text_field($_POST['mdw_deadline']));
+    }
+});
+
 // Enqueue Styles & Scripts
 function dashboard_enqueue_assets() {
     $styles = [

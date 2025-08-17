@@ -94,7 +94,8 @@ function dashboard_enqueue_assets() {
     $styles = [
         'custom-dashboard'        => '/assets/css/dashboard.css',
         'dashboard-custom-login'  => '/assets/css/custom-login.css',
-        'font-awesome'            => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css'
+        'font-awesome'            => 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css',
+        'project-single'          => '/assets/css/project-single.css'
     ];
 
     foreach ($styles as $handle => $path) {

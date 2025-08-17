@@ -1,0 +1,104 @@
+/* Container */
+.project-single {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  color: #1f2937;
+}
+
+/* Title */
+.project-single h1 {
+  font-size: 2rem;
+  margin-bottom: 0.5rem;
+  color: #111827;
+  border-bottom: 2px solid #e5e7eb;
+  padding-bottom: 0.5rem;
+}
+
+/* Meta info */
+.project-single p strong {
+  color: #374151;
+}
+.project-single p {
+  margin: 0.5rem 0;
+}
+
+/* Description */
+.project-single > div {
+  margin: 1rem 0 2rem;
+  line-height: 1.6;
+}
+
+/* Developer list */
+.project-single ul {
+  list-style: none;
+  padding: 0;
+}
+.project-single ul li {
+  background: #f9fafb;
+  border: 1px solid #e5e7eb;
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  margin: 0.4rem 0;
+}
+
+/* Section headings */
+.project-single h3 {
+  margin-top: 2rem;
+  font-size: 1.3rem;
+  color: #1d4ed8;
+  border-left: 4px solid #3b82f6;
+  padding-left: 0.5rem;
+}
+
+/* Form */
+.project-single form p {
+  margin: 1rem 0;
+}
+.project-single label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+.project-single select,
+.project-single input[type="date"] {
+  width: 100%;
+  padding: 0.6rem;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+.project-single button[type="submit"] {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.7rem 1.2rem;
+  background: #2563eb;
+  color: white;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.project-single button[type="submit"]:hover {
+  background: #1e40af;
+}
+
+/* Read only view */
+.project-single ul li strong {
+  color: #111827;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .project-single {
+    padding: 1rem;
+  }
+  .project-single h1 {
+    font-size: 1.5rem;
+  }
+}

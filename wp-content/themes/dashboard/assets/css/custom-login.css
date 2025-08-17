@@ -2,10 +2,13 @@ body {
   background: linear-gradient(135deg, #4f46e5, #9333ea);
   font-family: "Inter", sans-serif;
   height: 100vh;
-  /* display: flex; */
-  /* align-items: center; */
-  /* justify-content: center; */
   margin: 0;
+}
+
+body.page-template-page-login-php {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .login-container {

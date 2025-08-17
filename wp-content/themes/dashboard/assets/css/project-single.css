@@ -255,6 +255,10 @@
   border: 1px solid #ffeeba;
   padding: 12px;
   border-radius: 6px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Project Status */

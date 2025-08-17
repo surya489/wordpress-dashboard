@@ -144,14 +144,6 @@
   font-size: 16px;
 }
 
-/* Notice */
-.mdw-notice {
-  background: #fff3cd;
-  border: 1px solid #ffeeba;
-  padding: 12px;
-  border-radius: 6px;
-}
-
 /* Project Status */
 .project-status {
   display: flex;

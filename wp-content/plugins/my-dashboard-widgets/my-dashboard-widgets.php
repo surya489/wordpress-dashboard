@@ -202,3 +202,10 @@ function mdw_restrict_projects_to_employees($query) {
     }
 }
 add_action('pre_get_posts', 'mdw_restrict_projects_to_employees');
+
+add_filter('template_include', function ($template) {
+    if (is_singular('mdw_project')) {
+        return MDW_PATH . 'templates/single-mdw_project.php';
+    }
+    return $template;
+});

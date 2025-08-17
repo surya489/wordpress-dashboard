@@ -102,3 +102,283 @@
     font-size: 1.5rem;
   }
 }
+
+.mdw-dashboard {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+}
+
+/* Fixed Sidebar */
+.mdw-sidebar {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 240px;
+  height: 100vh;
+  padding: 20px;
+  background: #1f2937;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.mdw-logo {
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 24px;
+}
+
+.mdw-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.mdw-nav li {
+  margin-bottom: 12px;
+}
+
+.mdw-nav a {
+  display: block;
+  padding: 10px 12px;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.mdw-nav a:hover {
+  background: #374151;
+}
+
+.mdw-nav a.active {
+  background: #10b981;
+  color: #fff;
+}
+
+/* Main Area */
+.mdw-main {
+  margin-left: 280px;
+  padding: 24px;
+  flex: 1;
+}
+
+/* Topbar */
+.mdw-topbar {
+  background: #fff;
+  border-radius: 10px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.06);
+  margin-bottom: 24px;
+}
+
+.mdw-topbar__title {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* User Menu */
+.mdw-user {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}
+
+.mdw-avatar {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+}
+
+.mdw-user__name {
+  font-weight: 500;
+}
+
+.mdw-user:hover .mdw-user__dropdown {
+  display: block;
+}
+
+.mdw-user__dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #fff;
+  border-radius: 8px;
+  min-width: 160px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.mdw-user__dropdown a {
+  display: block;
+  padding: 10px 12px;
+  color: #111827;
+  text-decoration: none;
+}
+
+.mdw-user__dropdown a:hover {
+  background: #f3f4f6;
+}
+
+/* Widgets Grid */
+.mdw-widgets-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+}
+
+.canvas-wrapper {
+    position: relative;
+    z-index: 9;
+}
+
+.mdw-widget {
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.mdw-widget.project-status {
+  grid-column: 1 / -1;
+}
+
+.mdw-widget__title {
+  margin: 0 0 10px;
+  font-size: 16px;
+}
+
+/* Notice */
+.mdw-notice {
+  background: #fff3cd;
+  border: 1px solid #ffeeba;
+  padding: 12px;
+  border-radius: 6px;
+}
+
+/* Project Status */
+.project-status {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.project-status__content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.chart-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+}
+
+.chart-center-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.project-status__legend {
+  flex: 1;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.status-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #374151;
+}
+
+.status-wrapper {
+    text-align: left;
+    min-width: 90px;
+}
+
+.status-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-in-progress .status-dot {
+  background: #3498db;
+}
+
+.status-completed .status-dot {
+  background: #2ecc71;
+}
+
+.status-on-hold .status-dot {
+  background: #f39c12;
+}
+
+.status-label {
+  flex: 1;
+}
+
+.status-count {
+  font-weight: bold;
+  color: #666;
+}
+
+/* Card */
+.mdw-card {
+  height: -webkit-fill-available;
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.mdw-card-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 15px;
+  color: #333;
+}
+
+/* Doughnut Chart */
+.mdw-doughnut-wrap {
+  position: relative;
+  width: 240px;
+  margin: 0 auto;
+}
+
+.mdw-doughnut-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.mdw-doughnut-center span {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #4caf50;
+  display: block;
+}
+
+.mdw-doughnut-center small {
+  font-size: 0.9rem;
+  color: #666;
+}

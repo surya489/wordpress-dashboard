@@ -38,7 +38,7 @@ if ( isset($_POST['custom_login_nonce']) && wp_verify_nonce($_POST['custom_login
         if ( !is_wp_error($user) ) {
             
             // Allowed roles (from custom DB field)
-            $allowed_roles = array('admin', 'manager');
+            $allowed_roles = array('admin', 'manager', 'employee');
             $user_custom_role = get_user_meta($user->ID, 'custom_role', true);
 
             if (in_array($user_custom_role, $allowed_roles)) {

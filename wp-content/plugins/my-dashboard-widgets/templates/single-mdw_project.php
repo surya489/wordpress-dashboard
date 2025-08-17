@@ -1,7 +1,5 @@
 <?php
-
-get_header();
-
+// Handle Form Submission BEFORE output
 if (isset($_POST['mdw_update_project']) && (current_user_can('administrator') || current_user_can('manager'))) {
     $post_id = intval($_POST['post_id']);
     update_post_meta($post_id, '_mdw_status', sanitize_text_field($_POST['mdw_status']));
@@ -10,6 +8,8 @@ if (isset($_POST['mdw_update_project']) && (current_user_can('administrator') ||
     wp_redirect(get_permalink($post_id));
     exit;
 }
+
+get_header();
 
 while (have_posts()) : the_post();
 
@@ -46,7 +46,7 @@ while (have_posts()) : the_post();
                     <span class="mdw-user__name"><?php echo esc_html($current_user->display_name); ?></span>
                     <i class="fas fa-caret-down dropdown-icon"></i>
                     <ul class="user-dropdown">
-                        <li>
+                       <li>
                             <a href="<?php echo site_url('/profile'); ?>">
                                 <i class="fas fa-user"></i>
                                 <span class="">Profile</span>
